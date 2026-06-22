@@ -1,2 +1,2 @@
 # pakartstudio.github.io
-hello welcome to my new website
+hello welcome to my painting selling website
