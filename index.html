@@ -1,170 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>PakArt Studio PRO 🎨🔥</title>
+<title>PakArt Studio</title>
 
 <style>
-body{margin:0;font-family:sans-serif;background:#0a0a0a;color:white}
 
-/* RGB TITLE 🌈 */
-@keyframes rgb{
-0%{color:red}25%{color:yellow}50%{color:lime}75%{color:cyan}100%{color:magenta}
-}
-header{text-align:center;font-size:35px;padding:15px;animation:rgb 6s infinite}
-
-/* SEARCH 🔍 */
-.search{
-text-align:center;margin:10px;
-}
-.search input{
-padding:10px;width:80%;border-radius:20px;border:none;
+body {
+    margin:0;
+    font-family: Arial;
+    background:#050505;
+    color:white;
 }
 
-/* CATEGORY GRID */
-.categories{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:10px;padding:15px;
+/* RGB GLOW ANIMATION */
+@keyframes rgbGlow {
+    0% {box-shadow:0 0 10px red;}
+    25% {box-shadow:0 0 15px blue;}
+    50% {box-shadow:0 0 15px green;}
+    75% {box-shadow:0 0 15px purple;}
+    100% {box-shadow:0 0 10px red;}
 }
-.cat{
-background:#111;padding:10px;border-radius:10px;text-align:center;
-cursor:pointer;transition:.3s;
-}
-.cat:hover{background:#222;box-shadow:0 0 15px cyan}
 
-/* PRODUCTS */
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;padding:20px;
+/* HEADER */
+header {
+    text-align:center;
+    padding:40px;
+    background:black;
+    border-bottom:2px solid;
+    animation: rgbGlow 5s infinite;
 }
-.card{
-background:#111;padding:10px;border-radius:15px;text-align:center;
-transition:.3s;
-}
-.card:hover{transform:scale(1.05);box-shadow:0 0 20px magenta}
 
-.card img{
-width:100%;border-radius:10px;
+header h1 {
+    color:gold;
+    font-size:50px;
+}
+
+/* CATEGORY */
+.categories {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    background:#111;
+    padding:10px;
+}
+
+.categories button {
+    margin:5px;
+    padding:10px 15px;
+    background:#222;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.categories button:hover {
+    background:gold;
+    color:black;
+}
+
+/* GRID */
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+/* CARD */
+.card {
+    background:#111;
+    border-radius:15px;
+    overflow:hidden;
+    animation: rgbGlow 4s infinite;
+}
+
+.card img {
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card h3 {
+    color:gold;
+    padding:10px;
+}
+
+.card p {
+    padding:0 10px;
+    color:#aaa;
+}
+
+.price {
+    padding:10px;
+    color:#00ff88;
 }
 
 /* BUTTON */
-.btn{
-display:inline-block;margin:5px;padding:8px 12px;
-border-radius:20px;text-decoration:none;color:white;
-background:linear-gradient(45deg,red,blue,green);
+.btn {
+    display:block;
+    text-align:center;
+    margin:10px;
+    padding:10px;
+    background:linear-gradient(45deg,red,blue,green);
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
 }
 
-/* CART */
-.cart{
-position:fixed;top:10px;right:10px;background:#222;padding:10px;border-radius:10px;
+/* HIDE */
+.hidden {
+    display:none;
 }
 
-/* WHATSAPP */
-.whatsapp{
-position:fixed;bottom:20px;right:20px;background:#25D366;
-padding:15px;border-radius:50%;color:white;text-decoration:none;
-}
 </style>
+
 </head>
 
 <body>
 
-<header>🎨 PakArt Studio PRO 🌈🔥</header>
+<header>
+<h1>PakArt Studio</h1>
+<p>RGB Premium Art Store 🎨</p>
+</header>
 
-<div class="search">
-<input type="text" id="search" placeholder="🔍 Search artwork...">
+<div class="categories">
+<button onclick="filter('all')">All</button>
+<button onclick="filter('anime')">Anime</button>
+<button onclick="filter('cartoon')">Cartoon</button>
+<button onclick="filter('oil')">Oil</button>
+<button onclick="filter('abstract')">Abstract</button>
 </div>
 
-<div class="cart">🛒 Cart: <span id="cartCount">0</span></div>
+<div class="grid">
 
-<!-- 🎯 100 CATEGORIES -->
-<div class="categories" id="categories"></div>
+<div class="card anime">
+<img src="img1.jpg">
+<h3>Anime Hero Blaze</h3>
+<p>Energetic anime style artwork with bold colors.</p>
+<div class="price">PKR 2500</div>
+<a class="btn" href="https://wa.me/92XXXXXXXXXX">Order</a>
+</div>
 
-<!-- 🎨 PRODUCTS -->
-<div class="products" id="products"></div>
+<div class="card cartoon">
+<img src="img2.jpg">
+<h3>Cartoon Fun World</h3>
+<p>Playful cartoon art full of life and colors.</p>
+<div class="price">PKR 1800</div>
+<a class="btn" href="https://wa.me/92XXXXXXXXXX">Order</a>
+</div>
 
-<!-- 💬 WHATSAPP -->
-<a href="https://wa.me/923482670420" class="whatsapp">💬</a>
+<div class="card oil">
+<img src="img3.jpg">
+<h3>Golden Oil Sunset</h3>
+<p>Luxury oil painting with golden hour vibes.</p>
+<div class="price">PKR 3000</div>
+<a class="btn" href="https://wa.me/92XXXXXXXXXX">Order</a>
+</div>
+
+<div class="card abstract">
+<img src="img4.jpg">
+<h3>Color Explosion</h3>
+<p>Modern abstract with vibrant RGB tones.</p>
+<div class="price">PKR 2200</div>
+<a class="btn" href="https://wa.me/92XXXXXXXXXX">Order</a>
+</div>
+
+</div>
 
 <script>
-// 🎨 CATEGORY LIST (100)
-let categories = [
-"Landscape","Seascape","Galaxy","Floral","City","Animal","Fantasy","Abstract","Islamic","Nature",
-"Fire","Ice","Neon","Night","Sunset","Rainbow","Space","Surreal","Gaming","Photography",
-"Fireworks","Car","Bike","Desert","Forest","Island","Mountain","Bridge","Architecture","Birds",
-"Wildlife","Underwater","Volcano","Steampunk","Sci-Fi","Spiritual","Calligraphy","Ink","Acrylic","Oil",
-"Luxury","Gift","Home Decor","Wall Art","Puzzle","Digital","Handmade","Mirror","Textile","Mystic",
 
-// 50 more
-"Graffiti","Pop Art","Minimal","Vintage","Retro","Futuristic","Cyberpunk","Pixel","3D Art","Sketch",
-"Line Art","Doodle","Watercolor","Charcoal","Pastel","Expressionism","Impressionism","Realism","Cubism","Modern",
-"Boho","Mandala","Geometric","Typography","Sticker Art","NFT Style","Kids Art","Cartoon","Anime Style","Comic",
-"Street Art","Dark Art","Light Art","Dream Art","Mythology","Historical","Abstract Faces","Pattern Art","Luxury Gold","Silver Art",
-"Glass Art","Wood Art","Metal Art","Resin Art","Fluid Art","Drip Art","Splash Art","Fractal","AI Art","Experimental"
-];
+function filter(category) {
+    let cards = document.querySelectorAll('.card');
 
-// 🧠 CREATE CATEGORY BUTTONS
-let catContainer = document.getElementById("categories");
-categories.forEach(cat=>{
-let div=document.createElement("div");
-div.className="cat";
-div.innerText=cat+" 🎨";
-div.onclick=()=>filterCategory(cat);
-catContainer.appendChild(div);
-});
-
-// 🎨 PRODUCTS DATA
-let products = [];
-for(let i=1;i<=20;i++){
-products.push({
-name:"Art "+i+" 🎨🔥",
-price:1000+i*50,
-category:categories[i%categories.length],
-img:`https://source.unsplash.com/300x300/?art,${i}`
-});
-}
-
-// 🛒 CART
-let cart=0;
-function addCart(){
-cart++;
-document.getElementById("cartCount").innerText=cart;
-}
-
-// 🎨 DISPLAY PRODUCTS
-function showProducts(list){
-let container=document.getElementById("products");
-container.innerHTML="";
-list.forEach(p=>{
-container.innerHTML+=`
-<div class="card">
-<img src="${p.img}">
-<h3>${p.name}</h3>
-<p>💰 Rs.${p.price}</p>
-<p>🎨 ${p.category}</p>
-
-<a class="btn" onclick="addCart()">🛒 Add</a>
-<a class="btn" href="https://wa.me/923482670420?text=I want ${p.name} for Rs.${p.price}">💬 Buy</a>
-</div>
-`;
-});
-}
-
-showProducts(products);
-
-// 🔍 SEARCH
-document.getElementById("search").onkeyup=function(){
-let val=this.value.toLowerCase();
-let filtered=products.filter(p=>p.name.toLowerCase().includes(val));
-showProducts(filtered);
-}
-
-// 📂 FILTER
-function filterCategory(cat){
-let filtered=products.filter(p=>p.category===cat);
-showProducts(filtered);
+    cards.forEach(card => {
+        if(category === 'all') {
+            card.classList.remove('hidden');
+        } else {
+            if(card.classList.contains(category)) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        }
+    });
 }
 
 </script>
